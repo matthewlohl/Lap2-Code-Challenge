@@ -7,16 +7,17 @@
   <title>BookMark</title>
   <link rel="shortcut icon" href="./static/image/favicon.png" type="image/x-icon" alt="small alien">
   <link rel="stylesheet" href="./static/css/index.css">
-  <script src="./static/js/script.js"></script>
+  
 </head>
 <body>
   <div class="card">
-    <div class="container" contenteditable="true">
-      <h2 placeholder="title" id="title" class="textholder">title</h2>
+    <div id="container" class="container" contenteditable="false">
+      <h2 placeholder="title" id="title" class="textholder">Title</h2>
       <p placeholder="author" id="author" class="textholder">author</p>
       <p placeholder="content" id="content" class="textholder">content</p>
-      <button id="create">Create</button>
+      <button id="create" contenteditable="false">Create</button>
     </div>
   </div>
+  <script src="./static/js/script.js"></script>
 </body>
 </html>
