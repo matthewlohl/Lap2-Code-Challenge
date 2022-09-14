@@ -32,6 +32,17 @@ async function create (req, res) {
   }
 }
 
+async function update (req, res) {
+
+  try {
+    const post = await Post.findById(parseInt(req.params.id));
+    const updatePost = await post.update(req.body.title, req.body.author, req.body.body)
+    res.status(202).json({post: updatePost})
+  } catch (err) {
+    res.status(500).json({err})
+  }
+}
+
 async function destroy (req, res) {
 
   try {
@@ -42,3 +53,5 @@ async function destroy (req, res) {
     res.status(404).json({err})
   }
 }
+
+module.exports = {index, show, create, update, destroy}
