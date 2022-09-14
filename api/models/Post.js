@@ -60,7 +60,7 @@ class Post {
     delete() {
         return new Promise (async(res, rej) => {
             try{
-                await db.query(`SELECT FROM posts WHERE title = $1;`, [this.id]);
+                await db.query(`DELETE FROM posts WHERE id = $1;`, [this.id]);
                 resolve('Post was deleted')
             } catch (err){
                 rej(`Error deleting post: ${err}`)
