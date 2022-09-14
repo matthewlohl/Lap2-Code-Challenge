@@ -57,7 +57,7 @@ class Post {
         })
     }
 
-    destroy() {
+    delete() {
         return new Promise (async(res, rej) => {
             try{
                 await db.query(`SELECT FROM posts WHERE title = $1;`, [this.id]);

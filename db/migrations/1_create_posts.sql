@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS posts;
 
-CREATE TABLE dog(
+CREATE TABLE posts(
     id serial PRIMARY KEY,
     title varchar(100) NOT NULL,
     author varchar(100) NOT NULL,
