@@ -1,0 +1,25 @@
+
+* {
+  box-sizing: border-box;
+}
+
+.card {
+  margin: auto 20%;
+  text-align: center;
+  padding: 10% ;
+}
+
+.container {
+  border: solid 2px black;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 15px;
+  padding-bottom: 20px;
+}
+
+.textholder {
+  border: 1px solid;
+}
