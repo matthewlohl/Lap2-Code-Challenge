@@ -42,7 +42,17 @@ async function createPost(e) {
   }
 }
 
-
+// function updatePost (id, ) {
+//   const options = {
+//     method: 'PATCH'
+//   };
+//   fetch(`http://localhost:3000/posts/${id}`, options)
+//   .then(r => r.json())
+//   .then(data => {
+//     const {post} = data
+//     tr.querySe
+//   })
+// }
 
 async function deletePost (id) {
   try {

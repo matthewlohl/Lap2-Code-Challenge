@@ -15,7 +15,7 @@ class Post {
                 const posts = postsData.rows.map(d => new Post(d))
                 res(posts);
             } catch (err){
-                rej (`Error retrieving dogs: ${err}`)
+                rej(`Error retrieving dogs: ${err}`)
             }
         })
     }
@@ -23,9 +23,11 @@ class Post {
     static findById (id){
         return new Promise (async(res, rej)=> {
             try{
-                let postsData = await db.query(`SELECT * FROM posts WEHRE id = $1`, [id]);
-                const posts = postsData.row.map(d => new Post(d))
-                res(posts);
+                let postsData = await db.query(`SELECT * FROM posts WHERE id = $1;`, [id]);
+                
+                let post = new Post(postsData.rows[0]);
+
+                res(post);
             }catch(err){
                 rej(`Error retrieving post with id ${id}- Error: ${err}`)
             }
@@ -40,7 +42,7 @@ class Post {
                 resolve (newPost);
 
             } catch(err){
-                rej(`Error creating post- Error:${err}`)
+                reject(`Error creating post- Error:${err}`)
             }
         })
     }
@@ -61,7 +63,7 @@ class Post {
         return new Promise (async(res, rej) => {
             try{
                 await db.query(`DELETE FROM posts WHERE id = $1;`, [this.id]);
-                resolve('Post was deleted')
+                res('Post was deleted')
             } catch (err){
                 rej(`Error deleting post: ${err}`)
             }
