@@ -23,9 +23,9 @@ class Post {
     static findById (id){
         return new Promise (async(res, rej)=> {
             try{
-                let postsData = await db.query(`SELECT * FROM posts WHERE id = $1;`, [id]);
-                
-                let post = new Post(postsData.rows[0]);
+
+                let postsData = await db.query(`SELECT * FROM posts WHERE posts.id = $1;`, [id]);
+                let post = new Post(postsData.rows[0])
 
                 res(post);
             }catch(err){
@@ -38,8 +38,8 @@ class Post {
         return new Promise (async (res, rej) => {
             try{
                 let postsData = await db.query(`INSERT INTO posts (title, author, body) VALUES ($1, $2, $3) RETURNING *;`, [title, author, body])
-                let newPost = new Post (postsData.rows[0])
-                resolve (newPost);
+                // let newPost = new Post (postsData.rows[0])
+                res (postsData.rows[0]);
 
             } catch(err){
                 reject(`Error creating post- Error:${err}`)
