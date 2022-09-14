@@ -11,6 +11,7 @@ services:
         source: ./client
         target: /code
     command: [ "http-server" ]
+
   api:
     container_name: demo_dev_api
     ports:
