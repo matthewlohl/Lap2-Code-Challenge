@@ -1,8 +1,8 @@
 services:
   api:
     container_name: debug_dev_api
-    posts:
-      -3000:3000
+    ports:
+      - 3000:3000
     environment:
       - PGUSER=futureproof
       - PGHOST=db
@@ -21,7 +21,7 @@ services:
     environment:
       - POSTGRES_DB=posts
       - POSTGRES_USER=futureproof
-      - POSTGRES_PASSWORD=postpass
+      - POSTGRES_PASSWORD=postspass
 
 volumes:
   dbdata:
