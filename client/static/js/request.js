@@ -1,7 +1,7 @@
-async function getAll(category) {
+async function getAll() {
   
   try {
-    const response = await fetch(`http://localhost:3000/${category}`)
+    const response = await fetch(`http://localhost:3000/posts`)
     const data = await response.json()
     return data;
   } catch (err) {
@@ -9,10 +9,10 @@ async function getAll(category) {
   }
 }
 
-async function getItem(category,index) {
+async function getItem(index) {
 
   try {
-    const response = await fetch(`http://localhost:3000/${category}/${index}`);
+    const response = await fetch(`http://localhost:3000/posts/${index}`);
     const data = await response.json();
     return data;
   } catch (err) {
@@ -41,6 +41,8 @@ async function createPost(e) {
     
   }
 }
+
+
 
 async function deletePost (id) {
   try {
