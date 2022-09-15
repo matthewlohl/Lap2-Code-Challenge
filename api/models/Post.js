@@ -2,10 +2,10 @@ const db = require ('../dbConfig/init');
 
 class Post {
     constructor(data){
-        this.id = data.id
-        this.title = data.title
-        this.author = data.author
-        this.body = data.body
+        this.id = data.id;
+        this.title = data.title;
+        this.author = data.author;
+        this.body = data.body;
     }
 
     static get all() {
@@ -15,7 +15,7 @@ class Post {
                 const posts = postsData.rows.map(d => new Post(d))
                 res(posts);
             } catch (err){
-                rej (`Error retrieving dogs: ${err}`)
+                rej (`Error retrieving posts: ${err}`)
             }
         })
     }

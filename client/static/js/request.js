@@ -20,17 +20,37 @@ async function getItem(category,index) {
   }
 }
 
+const form = document.querySelector('form');
+form.addEventListener('submit', createPost)
+
 async function createPost(e) {
   e.preventDefault()
+  // const entryData{
+  //   title: e.target.title.value,
+  //   author: e.target.author.value,
+  //   content: e.target.author.value
+  // };
+
   try {
+    var title = document.getElementById('title').textContent
+    var author = document.getElementById('author').textContent
+    var content = document.getElementById('content').textContent
+    
+    const entryData = {
+      title: title,
+      author: author,
+      body: content
+    };
+
     const options = {
       method: 'POST',
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
-        }
+      body: JSON.stringify(entryData),
+      headers: {"Content-Type": "application/json"}
+      
+      }
 
     const response = await fetch('http://localhost:3000/posts', options);
-    const { id, err } = await response.json();
+    const r = await response.json();
 
     if(err){
       throw Error(err)
@@ -38,7 +58,7 @@ async function createPost(e) {
       window.location.hash = `#posts/${id}`
     }
   } catch (err) {
-    
+      console.warn(err)
   }
 }
 
