@@ -20,17 +20,32 @@ async function getItem(index) {
   }
 }
 
-async function createPost(e) {
+const form = document.querySelector('form');
+form.addEventListener('submit', createPost)
+
+ function createPost(e) {
   e.preventDefault()
+
   try {
+    var title = document.getElementById('title').textContent
+    var author = document.getElementById('author').textContent
+    var content = document.getElementById('content').textContent
+    
+    const entryData = {
+      title: title,
+      author: author,
+      body: content
+    };
+
     const options = {
       method: 'POST',
       headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
-        }
+      body: JSON.stringify(entryData)
+      
+      }
 
-    const response = await fetch('http://localhost:3000/posts', options);
-    const { id, err } = await response.json();
+    const response =  fetch('http://localhost:3000/posts', options);
+    const r =  response.json();
 
     if(err){
       throw Error(err)
@@ -38,7 +53,7 @@ async function createPost(e) {
       window.location.hash = `#posts/${id}`
     }
   } catch (err) {
-    
+      // console.warn(err)
   }
 }
 

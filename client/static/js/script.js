@@ -1,5 +1,6 @@
 var container = document.getElementById('container')
 
+
 window.addEventListener('load', function editable(){
     container.contentEditable = true;
 })
@@ -10,6 +11,7 @@ create_btn.addEventListener('click', changeName)
 function changeName () {
     var container = document.getElementById('container')
     if (create_btn.textContent === 'Create'){
+        createPost
         create_btn.textContent = 'Edit'
         container.style.color = 'grey';
         container.contentEditable = false;

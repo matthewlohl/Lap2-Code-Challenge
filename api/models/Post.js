@@ -2,10 +2,10 @@ const db = require ('../dbConfig/init');
 
 class Post {
     constructor(data){
-        this.id = data.id
-        this.title = data.title
-        this.author = data.author
-        this.body = data.body
+        this.id = data.id;
+        this.title = data.title;
+        this.author = data.author;
+        this.body = data.body;
     }
 
     static get all() {
@@ -15,7 +15,7 @@ class Post {
                 const posts = postsData.rows.map(d => new Post(d))
                 res(posts);
             } catch (err){
-                rej(`Error retrieving dogs: ${err}`)
+                rej (`Error retrieving posts: ${err}`)
             }
         })
     }
@@ -34,11 +34,10 @@ class Post {
         })
     }
 
-    static create(title, author, body){
+    static async create({title, author, body}){
         return new Promise (async (res, rej) => {
             try{
-                let postsData = await db.query(`INSERT INTO posts (title, author, body) VALUES ($1, $2, $3) RETURNING *;`, [title, author, body])
-                // let newPost = new Post (postsData.rows[0])
+                let postsData =  await db.query(`INSERT INTO posts (title, author, body) VALUES ($1, $2, $3) RETURNING *;`, [ title, author, body ]);
                 res (postsData.rows[0]);
 
             } catch(err){
