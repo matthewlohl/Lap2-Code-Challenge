@@ -23,8 +23,10 @@ class Post {
     static findById (id){
         return new Promise (async(res, rej)=> {
             try{
+
                 let postsData = await db.query(`SELECT * FROM posts WHERE posts.id = $1;`, [id]);
                 let post = new Post(postsData.rows[0])
+
                 res(post);
             }catch(err){
                 rej(`Error retrieving post with id ${id}- Error: ${err}`)
@@ -39,7 +41,7 @@ class Post {
                 res (postsData.rows[0]);
 
             } catch(err){
-                rej(`Error creating post- Error:${err}`)
+                reject(`Error creating post- Error:${err}`)
             }
         })
     }
@@ -60,7 +62,7 @@ class Post {
         return new Promise (async(res, rej) => {
             try{
                 await db.query(`DELETE FROM posts WHERE id = $1;`, [this.id]);
-                resolve('Post was deleted')
+                res('Post was deleted')
             } catch (err){
                 rej(`Error deleting post: ${err}`)
             }
