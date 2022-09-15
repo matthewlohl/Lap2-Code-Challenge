@@ -1,0 +1,33 @@
+
+* {
+  box-sizing: border-box;
+}
+
+.card {
+  margin: auto 20%;
+  text-align: center;
+  padding: 10% ;
+}
+
+.container {
+  border: solid 2px grey;
+  border-radius: 5px;
+  box-shadow: 5px 5px 15px grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 15px;
+  padding-bottom: 20px;
+}
+
+.textholder {
+  border: 1px solid gray;
+  border-radius: 5px;;
+  padding: 1rem 5rem;
+}
+
+#create{
+  padding: 5px 20px;
+  background-color: grey;
+}
