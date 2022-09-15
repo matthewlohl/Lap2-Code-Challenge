@@ -23,13 +23,8 @@ async function getItem(category,index) {
 const form = document.querySelector('form');
 form.addEventListener('submit', createPost)
 
-async function createPost(e) {
+ function createPost(e) {
   e.preventDefault()
-  // const entryData{
-  //   title: e.target.title.value,
-  //   author: e.target.author.value,
-  //   content: e.target.author.value
-  // };
 
   try {
     var title = document.getElementById('title').textContent
@@ -44,13 +39,13 @@ async function createPost(e) {
 
     const options = {
       method: 'POST',
-      body: JSON.stringify(entryData),
-      headers: {"Content-Type": "application/json"}
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(entryData)
       
       }
 
-    const response = await fetch('http://localhost:3000/posts', options);
-    const r = await response.json();
+    const response =  fetch('http://localhost:3000/posts', options);
+    const r =  response.json();
 
     if(err){
       throw Error(err)
@@ -58,7 +53,7 @@ async function createPost(e) {
       window.location.hash = `#posts/${id}`
     }
   } catch (err) {
-      console.warn(err)
+      // console.warn(err)
   }
 }
 

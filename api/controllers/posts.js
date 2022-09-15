@@ -26,7 +26,7 @@ async function create (req, res) {
 
   try {
     const post = await Post.create(req.body);
-    res.send(201).json(post)
+    res.status(201).json(post)
   } catch (err) {
     res.status(422).json({err})
   }

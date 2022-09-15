@@ -32,11 +32,10 @@ class Post {
         })
     }
 
-    static create(title, author, body){
+    static async create({title, author, body}){
         return new Promise (async (res, rej) => {
             try{
-                let postsData = await db.query(`INSERT INTO posts (title, author, body) VALUES ($1, $2, $3) RETURNING *;`, [title, author, body])
-                // let newPost = new Post (postsData.rows[0])
+                let postsData =  await db.query(`INSERT INTO posts (title, author, body) VALUES ($1, $2, $3) RETURNING *;`, [ title, author, body ]);
                 res (postsData.rows[0]);
 
             } catch(err){
